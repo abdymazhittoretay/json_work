@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> getData() async {
     var url = Uri.parse(
-      "https://api.openweathermap.org/data/2.5/weather?q=Shymkent&appid=$apiKey",
+      "https://api.openweathermap.org/data/2.5/weather?q=London&appid=$apiKey",
     );
 
     final response = await http.get(url);
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       final WeatherApiModel weatherApiModel = weatherApiModelFromJson(
         response.body,
       );
-      print(weatherApiModel.weather);
+      print(weatherApiModel.feelsLike);
     } else {
       print(response.statusCode);
     }
