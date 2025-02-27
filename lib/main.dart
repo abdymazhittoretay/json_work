@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       final WeatherApiModel weatherApiModel = weatherApiModelFromJson(
         response.body,
       );
-      print(weatherApiModel.feelsLike);
+      print(weatherApiModel.weather);
     } else {
       print(response.statusCode);
     }

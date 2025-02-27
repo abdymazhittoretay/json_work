@@ -1,8 +1,12 @@
 import 'dart:convert';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'weather_api_model.g.dart';
 
 WeatherApiModel weatherApiModelFromJson(String data) =>
     WeatherApiModel.fromJson(jsonDecode(data));
 
+@JsonSerializable(explicitToJson: true)
 class WeatherApiModel {
   final String? weather;
   final double? temp;
@@ -18,13 +22,6 @@ class WeatherApiModel {
     required this.maxTemp,
   });
 
-  factory WeatherApiModel.fromJson(Map<String, dynamic> data) {
-    return WeatherApiModel(
-      weather: data["weather"][0]["main"],
-      temp: data["main"]["temp"],
-      feelsLike: data["main"]["feelsLike"],
-      minTemp: data["main"]["minTemp"],
-      maxTemp: data["main"]["maxTemp"],
-    );
-  }
+  factory WeatherApiModel.fromJson(Map<String, dynamic> data) =>
+      _$WeatherApiModelFromJson(data);
 }
